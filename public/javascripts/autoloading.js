@@ -1,4 +1,5 @@
-var startpage=2
+var startpage=2;
+var feedid = '';
 
 var xmlhttp;
 if (window.XMLHttpRequest)
@@ -35,6 +36,7 @@ function load(){
 	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
 	    {
 		var objs = eval(xmlhttp.responseText);
+		feedid = objs[0]._id;
 		document.getElementById("text").innerHTML=objs[0].text;
 		document.getElementById("author").innerHTML=objs[0].author+"("+objs[0].created_at+")";	
 	    }
@@ -43,6 +45,11 @@ function load(){
 	xmlhttp.send();
 	//startpage=startpage+1		
 };
+
+function share(){
+	var url = "http://service.weibo.com/share/share.php?url=http://gddln.com/cache/"+feedid+"&appkey=1290447933&title="+document.getElementById("text").innerHTML+"-@"+document.getElementById("author").innerHTML+"（via@哥德的理念）&pic="+document.getElementById("image_url").src;
+	window.open(url)
+}
 
 setInterval("autoloading()",1000*60);
 

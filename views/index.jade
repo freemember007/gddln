@@ -22,7 +22,7 @@
 						.radio
 							iframe(src='http://douban.fm/partner/baidu/doubanradio')
 						.share
-							a(id='sinashare', href='http://service.weibo.com/share/share.php?url=http://gddln.com/cache/#{item._id}&appkey=1290447933&title=#{item.text}-@#{item.author}（via@哥德的理念）&pic=#{item.image_url}', target='_blank') 分享到weibo
+							a(id='sinashare', href='#',onclick='share()') 分享到weibo
 						.share
 							//a(href='#',onclick='autoloading()')下一个
 							a(href='/#{page}')下一个
