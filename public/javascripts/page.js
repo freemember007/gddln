@@ -25,21 +25,21 @@ else{
 };
 
 
-function nextpage(event)
-{
-   event = event ? event : (window.event ? window.event : null);
-   if (event.keyCode==39)
-   {
-     location=nextpage
-   }
-  if (event.keyCode==37)
-  {
-    location=prevpage;
-  }
-}
+// function nextpage(event)
+// {
+//    event = event ? event : (window.event ? window.event : null);
+//    if (event.keyCode==39)
+//    {
+//      location=nextpage
+//    }
+//   if (event.keyCode==37)
+//   {
+//     location=prevpage;
+//   }
+// }
 
-document.keyup(function(event){
-   if(event.keyCode==83){
-    	window.open(document.getElementById("sinashare").href,'_self');
-    };
-});
+// document.keyup(function(event){
+//    if(event.keyCode==83){
+//     	window.open(document.getElementById("sinashare").href,'_self');
+//     };
+// });
