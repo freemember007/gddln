@@ -15,6 +15,7 @@ autoloading = function(direction) {
     data = eval(res);
     if (data[0]) {
       $("#image_url,#text,#author").fadeOut(function() {
+        $("#image_url").attr("src", "");
         $("#image_url").attr("src", data[0].image_url).fadeIn();
         $("#text").text(data[0].text).fadeIn();
         return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn();
