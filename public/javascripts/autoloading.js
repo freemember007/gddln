@@ -3,7 +3,10 @@ var autoloading, share, startpage;
 
 startpage = parseInt(window.location.hash.replace("#", "")) || 1;
 
-autoloading = function(direction) {
+autoloading = function(direction, speed) {
+  if (speed == null) {
+    speed = 2000;
+  }
   if (direction === "next") {
     startpage += 1;
   } else if (direction === "pre") {
@@ -14,12 +17,11 @@ autoloading = function(direction) {
 
     data = eval(res);
     if (data[0]) {
-      $("#image_url,#text,#author").fadeOut(slow(function() {
-        $("#image_url").attr("src", "aaa");
-        $("#image_url").attr("src", data[0].image_url).fadeIn(slow);
-        $("#text").text(data[0].text).fadeIn(slow);
-        return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn(slow);
-      }));
+      $("#image_url,#text,#author").fadeOut(speed, function() {
+        $("#image_url").attr("src", data[0].image_url).fadeIn(speed);
+        $("#text").text(data[0].text).fadeIn(speed);
+        return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn(speed);
+      });
       $("#sinashare").attr("itemID", data[0]._id);
       return window.location = "#" + startpage;
     } else {
@@ -41,10 +43,10 @@ share = function() {
 
 $(document).keydown(function(e) {
   if (e.keyCode === 39) {
-    autoloading("next");
+    autoloading("next", 500);
   }
   if (e.keyCode === 37 && startpage !== 1) {
-    return autoloading("pre");
+    return autoloading("pre", 500);
   }
 });
 
