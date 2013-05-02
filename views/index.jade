@@ -18,7 +18,9 @@
 					img(src=item.image_url,id='image_url')
 					.right
 						#text= item.text
-						#author= item.author+"("+time+")"
+						#author 
+							a(href="http://weibo.com/"+item.site_id,target="_blank")=item.author 
+							span= " ("+time+")"
 						.radio
 							iframe(src='http://douban.fm/partner/baidu/doubanradio')
 						.share

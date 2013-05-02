@@ -36,6 +36,7 @@ var itemSchema = new Schema({
   , created_at : Date
   , source     : String
   , weibo_id   : String
+  , site_id    : String
 });
 mongoose.model('item', itemSchema);
 var item = mongoose.model('item');

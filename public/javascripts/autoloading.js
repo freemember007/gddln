@@ -23,9 +23,12 @@ autoloading = function(direction, speed) {
         $("#image_url").attr("src", data[0].image_url).fadeIn(speed);
         $("#text").text(data[0].text).fadeIn(speed);
         time = moment(data[0].created_at).fromNow();
-        return $("#author").text(data[0].author + "(" + time + ")").fadeIn(speed);
+        $("#author a").text(data[0].author);
+        $("#author span").text(" (" + time + ")");
+        return $("#author").fadeIn(speed);
       });
       $("#sinashare").attr("itemID", data[0]._id);
+      $("#author a").attr("href", "http://weibo.com/" + data[0].site_id);
       return window.location = "#" + startpage;
     } else {
       return startpage = 0;
@@ -34,7 +37,7 @@ autoloading = function(direction, speed) {
 };
 
 if (startpage !== 1) {
-  autoloading();
+  autoloading(false, 500);
 }
 
 share = function() {

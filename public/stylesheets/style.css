@@ -81,6 +81,10 @@ a{
 	text-align:center;
 }
 
+#author a{	
+	color:#666666;
+}
+
 .radio{
 	padding-top:10px;
 }

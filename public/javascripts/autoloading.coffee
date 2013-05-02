@@ -6,18 +6,21 @@ autoloading = (direction,speed=2000) ->
 		data = eval(res)
 		if data[0]
 			$("#image_url,#text,#author").fadeOut speed, ->
-				#$("#image_url").attr("src", "aaa") # 用新图片的load callback事件会有空白等待，不过貌似这个办法也不行，先用速度吧。。
+				# 用新图片的load callback事件会有空白等待，先用速度吧。。
 				$("#image_url").attr("src", data[0].image_url).fadeIn(speed)
 				$("#text").text(data[0].text).fadeIn(speed)
 				time = moment(data[0].created_at).fromNow() #待研究
-				$("#author").text(data[0].author + "(" + time + ")" ).fadeIn(speed)
+				$("#author a").text(data[0].author)
+				$("#author span").text(" (" + time + ")" )
+				$("#author").fadeIn(speed)
 			$("#sinashare").attr("itemID",data[0]._id)
+			$("#author a").attr("href","http://weibo.com/" + data[0].site_id)
 			window.location = "#"+startpage #或window.location.hash = startpage
 		else
 			startpage = 0 #从头开始。
 	)
 
-autoloading() if startpage isnt 1 #带#号的URL定个位
+autoloading(false,500) if startpage isnt 1 #带#号的URL定个位
 
 share = ->
 	url = "http://service.weibo.com/share/share.php?url=http://" + document.location.host + "/cache/" + $("#sinashare").attr("itemID") + "&appkey=1290447933&title=" + $("#text").text()+"-@" + $("#author").text().replace(/\(.*?\)/,"") + "（via@哥德的理念）&pic=" + $("#image_url").attr("src")

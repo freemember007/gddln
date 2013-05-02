@@ -30,9 +30,10 @@ for (x in sites){
 							      if(tweets[i].text.match(/屁股|预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让|肉肉/) || tweets[i].bmiddle_pic == null){
 										}
 										else{
-						        	$("vmag.items").save({text:tweets[i].text,image_url:tweets[i].bmiddle_pic,author:tweets[i].user.name,created_at:tweets[i].created_at,weibo_id:tweets[i].mid,source:"weibo"})
+						        	$("vmag.items").save({text:tweets[i].text,image_url:tweets[i].bmiddle_pic,author:tweets[i].user.name,created_at:tweets[i].created_at,weibo_id:tweets[i].mid,source:"weibo",site_id:tweets[i].user.id})
 											console.log(i + tweets[i].text)
 											console.log(i + tweets[i].user.name)
+											console.log(sites[x])
 										}
 						     }
 						  }
