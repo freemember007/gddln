@@ -6,7 +6,7 @@ autoloading = (direction) ->
 		data = eval(res)
 		if data[0]
 			$("#image_url,#text,#author").fadeOut ->
-				$("#image_url").attr("src", "") # 用新图片的load callback事件会有空白等待，不如用此简单办法
+				$("#image_url").attr("src", "#") # 用新图片的load callback事件会有空白等待，不过貌似这个办法也不行。
 				$("#image_url").attr("src", data[0].image_url).fadeIn()
 				$("#text").text(data[0].text).fadeIn()
 				$("#author").text(data[0].author+"("+data[0].created_at+")").fadeIn()
