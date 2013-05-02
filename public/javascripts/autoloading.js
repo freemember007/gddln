@@ -14,12 +14,12 @@ autoloading = function(direction) {
 
     data = eval(res);
     if (data[0]) {
-      $("#image_url,#text,#author").fadeOut(function() {
-        $("#image_url").attr("src", "#");
-        $("#image_url").attr("src", data[0].image_url).fadeIn();
-        $("#text").text(data[0].text).fadeIn();
-        return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn();
-      });
+      $("#image_url,#text,#author").fadeOut(slow(function() {
+        $("#image_url").attr("src", "aaa");
+        $("#image_url").attr("src", data[0].image_url).fadeIn(slow);
+        $("#text").text(data[0].text).fadeIn(slow);
+        return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn(slow);
+      }));
       $("#sinashare").attr("itemID", data[0]._id);
       return window.location = "#" + startpage;
     } else {

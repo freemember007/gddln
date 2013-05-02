@@ -5,11 +5,11 @@ autoloading = (direction) ->
 	$.get("/ajax/"+startpage, (res)->
 		data = eval(res)
 		if data[0]
-			$("#image_url,#text,#author").fadeOut ->
-				$("#image_url").attr("src", "#") # 用新图片的load callback事件会有空白等待，不过貌似这个办法也不行。
-				$("#image_url").attr("src", data[0].image_url).fadeIn()
-				$("#text").text(data[0].text).fadeIn()
-				$("#author").text(data[0].author+"("+data[0].created_at+")").fadeIn()
+			$("#image_url,#text,#author").fadeOut slow ->
+				$("#image_url").attr("src", "aaa") # 用新图片的load callback事件会有空白等待，不过貌似这个办法也不行。
+				$("#image_url").attr("src", data[0].image_url).fadeIn(slow)
+				$("#text").text(data[0].text).fadeIn(slow)
+				$("#author").text(data[0].author+"("+data[0].created_at+")").fadeIn(slow)
 			$("#sinashare").attr("itemID",data[0]._id)
 			window.location = "#"+startpage #或window.location.hash = startpage
 		else
