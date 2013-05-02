@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-
+var moment = require('moment');
 var express = require('express')
 var app = module.exports = express.createServer();
 
@@ -48,6 +48,7 @@ app.get('/', function(req, res){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
+			time: moment(docs[0].created_at).fromNow(),
 			page: 2
 		});
 	})

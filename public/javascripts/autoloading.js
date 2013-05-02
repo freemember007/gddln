@@ -18,9 +18,12 @@ autoloading = function(direction, speed) {
     data = eval(res);
     if (data[0]) {
       $("#image_url,#text,#author").fadeOut(speed, function() {
+        var time;
+
         $("#image_url").attr("src", data[0].image_url).fadeIn(speed);
         $("#text").text(data[0].text).fadeIn(speed);
-        return $("#author").text(data[0].author + "(" + data[0].created_at + ")").fadeIn(speed);
+        time = moment(data[0].created_at).fromNow();
+        return $("#author").text(data[0].author + "(" + time + ")").fadeIn(speed);
       });
       $("#sinashare").attr("itemID", data[0]._id);
       return window.location = "#" + startpage;

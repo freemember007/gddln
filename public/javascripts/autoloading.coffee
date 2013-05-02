@@ -9,7 +9,8 @@ autoloading = (direction,speed=2000) ->
 				#$("#image_url").attr("src", "aaa") # 用新图片的load callback事件会有空白等待，不过貌似这个办法也不行，先用速度吧。。
 				$("#image_url").attr("src", data[0].image_url).fadeIn(speed)
 				$("#text").text(data[0].text).fadeIn(speed)
-				$("#author").text(data[0].author+"("+data[0].created_at+")").fadeIn(speed)
+				time = moment(data[0].created_at).fromNow() #待研究
+				$("#author").text(data[0].author + "(" + time + ")" ).fadeIn(speed)
 			$("#sinashare").attr("itemID",data[0]._id)
 			window.location = "#"+startpage #或window.location.hash = startpage
 		else
