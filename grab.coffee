@@ -25,8 +25,9 @@ for x in sites
 				tweets = tweets.statuses
 				if tweets && tweets.length
 					for i in tweets
-						if i.text.match(/预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让/) or i.bmiddle_pic is null
+						if i.text.match(/预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让/) or i.bmiddle_pic is undefined #注意：用null是不对的
 						else
+							console.log("image_url: " + i.bmiddle_pic)
 							$("vmag.items").save({text:i.text,image_url:i.bmiddle_pic,author:i.user.name,created_at:i.created_at,weibo_id:i.mid,source:"weibo",site_id:i.user.id})
 							console.log("\n" + i.text)
 							console.log("by " + i.user.name)
