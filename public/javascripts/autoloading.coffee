@@ -13,15 +13,16 @@ autoloading = (direction,speed=2000) ->
 				$("#author a").text(data[0].author)
 				$("#author span").text(" (" + time + ")" )
 				$("#author").fadeIn(speed)
+				window.scrollTo(0,0)
 			$("#sinashare").attr("itemID",data[0]._id)
 			$("#author a").attr("href","http://weibo.com/" + data[0].site_id)
-			if startpage is 1 then $("#goPre").hide() else $("#goPre").show()
 			window.location = "#"+startpage #或window.location.hash = startpage
+			if startpage is 1 then $("#goPre").hide() else $("#goPre").show()
 		else
 			startpage = 0 #从头开始。
 	)
 
-autoloading(false,500) if startpage isnt 1 #带#号的URL定个位
+autoloading(false,500) if startpage isnt 1 #给带#号的URL定个位
 $ ->
 	$("#goPre").hide() if startpage is 1
 

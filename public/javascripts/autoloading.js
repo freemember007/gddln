@@ -25,16 +25,17 @@ autoloading = function(direction, speed) {
         time = moment(data[0].created_at).fromNow();
         $("#author a").text(data[0].author);
         $("#author span").text(" (" + time + ")");
-        return $("#author").fadeIn(speed);
+        $("#author").fadeIn(speed);
+        return window.scrollTo(0, 0);
       });
       $("#sinashare").attr("itemID", data[0]._id);
       $("#author a").attr("href", "http://weibo.com/" + data[0].site_id);
+      window.location = "#" + startpage;
       if (startpage === 1) {
-        $("#goPre").hide();
+        return $("#goPre").hide();
       } else {
-        $("#goPre").show();
+        return $("#goPre").show();
       }
-      return window.location = "#" + startpage;
     } else {
       return startpage = 0;
     }
