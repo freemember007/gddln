@@ -27,6 +27,18 @@ a{
 	margin-left:400px;
 }
 
+#backTop{
+	left:50%;
+	bottom:155px;
+	padding: 5px;
+	border:1px dotted #ddd;
+	color: #eee;
+	font-size: 24px;
+	position: fixed;
+	cursor: pointer;
+	display: none;
+}
+
 #main{
 	margin-left:auto;
 	margin-right:auto;

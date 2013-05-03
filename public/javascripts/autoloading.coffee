@@ -1,8 +1,10 @@
+# 基础变量赋值
 startpage=parseInt(window.location.hash.replace("#","")) or 1
 
+# 将被调用的函数
 autoloading = (direction,speed=2000) ->
 	if direction is "next" then startpage+=1 else if direction is "pre" then startpage+=-1
-	$.get("/ajax/"+startpage, (res)->
+	$.get("/ajax/"+startpage, (res) ->
 		data = eval(res)
 		if data[0]
 			$("#image_url,#text,#author").fadeOut speed, ->
@@ -22,16 +24,26 @@ autoloading = (direction,speed=2000) ->
 			startpage = 0 #从头开始。
 	)
 
-autoloading(false,500) if startpage isnt 1 #给带#号的URL定个位
-$ ->
-	$("#goPre").hide() if startpage is 1
+scrollToTop = ->
+	window.scrollTo(0,0)
 
 share = ->
 	url = "http://service.weibo.com/share/share.php?url=http://" + document.location.host + "/cache/" + $("#sinashare").attr("itemID") + "&appkey=1290447933&title=" + $("#text").text()+"-@" + $("#author").text().replace(/\(.*?\)/,"") + "（via@哥德的理念）&pic=" + $("#image_url").attr("src")
 	window.open(url.replace(/#.*?#/g,""))
 
-$(document).keydown (e) ->
+# 页面初始化
+autoloading(false,500) if startpage isnt 1 #给带#号的URL重定向内容
+$ ->
+	$("#goPre").hide() if startpage is 1
+
+# 事件监听
+$(document).keydown (e) -> #貌似keypress比keydown,keyup对window scroolTo事件反应得都好, 不过press怎么时好时不好?
 	if e.keyCode is 39 then autoloading("next",500)
 	if e.keyCode is 37 and startpage isnt 1 then autoloading("pre",500)
+	if e.keyCode is 67 then window.scrollTo(0,0)
+
+$(document).scroll ->
+	offset =  $(document).scrollTop()
+	if offset>800 then $("#backTop").css("display","inline") else $("#backTop").css("display","none")
 
 setInterval("autoloading('next')",1000*60)
