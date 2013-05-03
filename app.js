@@ -75,6 +75,7 @@ app.get('/:id', function(req, res){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
+			time: moment(docs[0].created_at).fromNow(),
 			page: parseInt(req.params.id)+1
 		});
 	})
@@ -85,6 +86,7 @@ app.get('/bak/:id', function(req, res){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
+			time: moment(docs[0].created_at).fromNow(),
 			page: 2
 		});
 	})
@@ -95,6 +97,7 @@ app.get('/cache/:id', function(req, res){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
+			time: moment(docs[0].created_at).fromNow(),
 			page: 2
 		});
 	})
