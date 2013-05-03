@@ -29,6 +29,11 @@ autoloading = function(direction, speed) {
       });
       $("#sinashare").attr("itemID", data[0]._id);
       $("#author a").attr("href", "http://weibo.com/" + data[0].site_id);
+      if (startpage === 1) {
+        $("#goPre").hide();
+      } else {
+        $("#goPre").show();
+      }
       return window.location = "#" + startpage;
     } else {
       return startpage = 0;
@@ -39,6 +44,12 @@ autoloading = function(direction, speed) {
 if (startpage !== 1) {
   autoloading(false, 500);
 }
+
+$(function() {
+  if (startpage === 1) {
+    return $("#goPre").hide();
+  }
+});
 
 share = function() {
   var url;

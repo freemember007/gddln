@@ -15,12 +15,15 @@ autoloading = (direction,speed=2000) ->
 				$("#author").fadeIn(speed)
 			$("#sinashare").attr("itemID",data[0]._id)
 			$("#author a").attr("href","http://weibo.com/" + data[0].site_id)
+			if startpage is 1 then $("#goPre").hide() else $("#goPre").show()
 			window.location = "#"+startpage #或window.location.hash = startpage
 		else
 			startpage = 0 #从头开始。
 	)
 
 autoloading(false,500) if startpage isnt 1 #带#号的URL定个位
+$ ->
+	$("#goPre").hide() if startpage is 1
 
 share = ->
 	url = "http://service.weibo.com/share/share.php?url=http://" + document.location.host + "/cache/" + $("#sinashare").attr("itemID") + "&appkey=1290447933&title=" + $("#text").text()+"-@" + $("#author").text().replace(/\(.*?\)/,"") + "（via@哥德的理念）&pic=" + $("#image_url").attr("src")
