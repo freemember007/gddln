@@ -71,7 +71,10 @@ $(document).keydown(function(e) {
     autoloading("pre", 500);
   }
   if (e.keyCode === 67) {
-    return window.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+  }
+  if (e.keyCode === 83) {
+    return share();
   }
 });
 

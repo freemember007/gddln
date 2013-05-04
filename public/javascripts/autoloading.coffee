@@ -1,5 +1,5 @@
 # 基础变量赋值
-startpage=parseInt(window.location.hash.replace("#","")) or 1
+startpage = parseInt(window.location.hash.replace("#","")) or 1
 
 # 将被调用的函数
 autoloading = (direction,speed=2000) ->
@@ -41,6 +41,7 @@ $(document).keydown (e) -> #貌似keypress比keydown,keyup对window scroolTo事�
 	if e.keyCode is 39 then autoloading("next",500)
 	if e.keyCode is 37 and startpage isnt 1 then autoloading("pre",500)
 	if e.keyCode is 67 then window.scrollTo(0,0)
+	if e.keyCode is 83 then share()
 
 $(document).scroll ->
 	offset =  $(document).scrollTop()

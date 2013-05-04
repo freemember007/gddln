@@ -32,7 +32,7 @@ for (_i = 0, _len = sites.length; _i < _len; _i++) {
         _results = [];
         for (_j = 0, _len1 = tweets.length; _j < _len1; _j++) {
           i = tweets[_j];
-          if (i.text.match(/预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让/) || i.bmiddle_pic === void 0) {
+          if (i.text.match(/预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让|微信/) || i.bmiddle_pic === void 0) {
 
           } else {
             console.log("image_url: " + i.bmiddle_pic);
