@@ -8,7 +8,7 @@ body{
 }
 
 a{
-	color:#333333;
+	color:#666;
 	text-decoration:none;
 }
 
@@ -29,7 +29,7 @@ a{
 
 #backTop{
 	left:50%;
-	bottom:155px;
+	bottom:50%;
 	padding: 5px;
 	border:1px dotted #ddd;
 	color: #eee;
@@ -137,6 +137,10 @@ a{
 	text-align:center;
 	color:#cccccc;
 	font-size:12px;
+}
+
+#bottom a{
+	color:#cccccc;
 }
 
 #tongji{

@@ -17,13 +17,13 @@ for (_i = 0, _len = sites.length; _i < _len; _i++) {
     path: '/2/statuses/user_timeline.json?access_token=2.00xudY2B29a16B379183efediehepD&uid=' + x + '&feature=1&count=1',
     method: 'get'
   };
-  https.request(options).addListener('response', function(response) {
+  https.request(options, function(res) {
     var result;
 
     result = '';
-    return response.addListener('data', function(data) {
+    return res.on('data', function(data) {
       return result += data;
-    }).addListener('end', function() {
+    }).on('end', function() {
       var i, tweets, _j, _len1, _results;
 
       tweets = JSON.parse(result);

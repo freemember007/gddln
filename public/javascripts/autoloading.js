@@ -9,8 +9,12 @@ autoloading = function(direction, speed) {
   }
   if (direction === "next") {
     startpage += 1;
-  } else if (direction === "pre") {
+  }
+  if (direction === "pre") {
     startpage += -1;
+  }
+  if (direction === "home") {
+    startpage = 1;
   }
   return $.get("/ajax/" + startpage, function(res) {
     var data;
@@ -21,7 +25,7 @@ autoloading = function(direction, speed) {
         var time;
 
         $("#image_url").attr("src", data[0].image_url).fadeIn(speed);
-        $("#text").text(data[0].text).fadeIn(speed);
+        $("#text").html(data[0].text.replace(/http:\/\/t\.cn\/[a-zA-Z0-9]{4,7}/g, "<a href='$&', target='_blank'>$&</a>")).fadeIn(speed);
         time = moment(data[0].created_at).fromNow();
         $("#author a").text(data[0].author);
         $("#author span").text(" (" + time + ")");
@@ -59,8 +63,11 @@ if (startpage !== 1) {
 
 $(function() {
   if (startpage === 1) {
-    return $("#goPre").hide();
+    $("#goPre").hide();
   }
+  return $("#text").html(function(index, content) {
+    return content.replace(/http:\/\/t\.cn\/[a-zA-Z0-9]{4,7}/g, "<a href='$&', target='_blank'>$&</a>");
+  });
 });
 
 $(document).keydown(function(e) {
