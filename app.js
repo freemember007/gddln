@@ -11,7 +11,7 @@ app.configure(function(){
 	app.set('view engine', 'jade');
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
-	app.use(require('stylus').middleware({ src: __dirname + '/public', compress : true}));
+	//app.use(require('stylus').middleware({ src: __dirname + '/public', compress : true}));
 	app.use(express.compiler({src: __dirname + '/public', enable: ['coffeescript']}));
 	app.use(express.static(__dirname + '/public'));
 });
