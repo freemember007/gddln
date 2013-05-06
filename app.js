@@ -6,21 +6,22 @@ var express = require('express')
 var app = module.exports = express.createServer();
 
 // Configuration
-
 app.configure(function(){
-  app.set('views', __dirname + '/views');
-  app.set('view engine', 'jade');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(express.static(__dirname + '/public'));
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'jade');
+	app.use(express.bodyParser());
+	app.use(express.methodOverride());
+	app.use(require('stylus').middleware({ src: __dirname + '/public', compress : true}));
+	app.use(express.compiler({src: __dirname + '/public', enable: ['coffeescript']}));
+	app.use(express.static(__dirname + '/public'));
 });
 
 app.configure('development', function(){
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('production', function(){
-  app.use(express.errorHandler());
+	app.use(express.errorHandler());
 });
 
 // Model
@@ -29,14 +30,14 @@ mongoose.connect('mongodb://localhost/vmag');
 var Schema = mongoose.Schema
  , ObjectId = Schema.ObjectId;
 var itemSchema = new Schema({
-	_id        : ObjectId
-  , author     : String
-  , text       : String
-  , image_url  : String
-  , created_at : Date
-  , source     : String
-  , weibo_id   : String
-  , site_id    : String
+	_id				: ObjectId
+	, author		 : String
+	, text			 : String
+	, image_url	: String
+	, created_at : Date
+	, source		 : String
+	, weibo_id	 : String
+	, site_id		: String
 });
 mongoose.model('item', itemSchema);
 var item = mongoose.model('item');
@@ -103,6 +104,7 @@ app.get('/cache/:id', function(req, res){
 	})
 });
 
-app.listen(process.env.NODE_ENV === 'production' ? 80 : 3000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+
+app.listen(process.env.NODE_ENV === 'production' ? 80 : process.env.PORT||3000, function(){
+	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });

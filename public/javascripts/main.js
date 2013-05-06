@@ -81,7 +81,10 @@ $(document).keydown(function(e) {
     window.scrollTo(0, 0);
   }
   if (e.keyCode === 83) {
-    return share();
+    share();
+  }
+  if (e.keyCode === 70) {
+    return $(document).toggleFullScreen();
   }
 });
 

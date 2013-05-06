@@ -50,6 +50,7 @@ $(document).keydown (e) -> #貌似keypress比keydown,keyup对window scroolTo事�
 	if e.keyCode is 37 and startpage isnt 1 then autoloading("pre",500)
 	if e.keyCode is 67 then window.scrollTo(0,0)
 	if e.keyCode is 83 then share()
+	if e.keyCode is 70 then $(document).toggleFullScreen();
 
 $(document).scroll ->
 	offset =  $(document).scrollTop()
