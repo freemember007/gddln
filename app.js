@@ -4,6 +4,7 @@
 var moment = require('moment');
 var express = require('express')
 var app = module.exports = express.createServer();
+var nib = require("nib");//还没搞明白是咋用的。。。
 
 // Configuration
 app.configure(function(){
@@ -11,7 +12,7 @@ app.configure(function(){
 	app.set('view engine', 'jade');
 	app.use(express.bodyParser());
 	app.use(express.methodOverride());
-	//app.use(require('stylus').middleware({ src: __dirname + '/public', compress : true}));
+	app.use(require('stylus').middleware({src: __dirname + '/public', compress: true, firebug: true}));
 	app.use(express.compiler({src: __dirname + '/public', enable: ['coffeescript']}));
 	app.use(express.static(__dirname + '/public'));
 });
