@@ -1,6 +1,4 @@
-/**
- * Module dependencies.
- */
+// Module dependencies
 var moment = require('moment');
 var express = require('express')
 var app = module.exports = express.createServer();
@@ -25,7 +23,7 @@ app.configure('production', function(){
 	app.use(express.errorHandler());
 });
 
-// Model
+// Model & cron job
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/vmag');
 var Schema = mongoose.Schema
@@ -42,6 +40,20 @@ var itemSchema = new Schema({
 });
 mongoose.model('item', itemSchema);
 var item = mongoose.model('item');
+
+var grab = require('./grab.js');
+var cronJob = require('cron').CronJob;
+new cronJob('* */20 * * * *', function(){
+    grab.fetch(item);
+	}, function () {
+    console.log('哦，糟糕，任务意外终止了。。。');
+  }, true);
+
+// var grab = require('./grab.js');
+// setInterval(function(){
+// 		grab.fetch(item)
+// 	},1000*60*60
+// );
 
 
 // Routes
@@ -106,6 +118,10 @@ app.get('/cache/:id', function(req, res){
 });
 
 
-app.listen(process.env.NODE_ENV === 'production' ? 80 : process.env.PORT||3000, function(){
-	console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
-});
+if(process.env.VCAP_SERVICES){
+	app.listen(process.env.VMC_APP_PORT || 1337, null);
+}else{
+	app.listen(process.env.NODE_ENV === 'production' ? 80 : 3000, function(){
+		console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+	});
+}
