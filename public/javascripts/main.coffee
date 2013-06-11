@@ -2,6 +2,14 @@
 startpage = parseInt(window.location.hash.replace("#","")) || 1
 
 # 将被调用的函数
+setTheme = (name, foreground, background) ->
+	date = new Date()
+	date.setTime(date.getTime() + 10000)
+	$(document.body).css('background',background)
+	$('#main').css('background',foreground)
+	document.cookie = 'theme=' + escape(name) + '; expires=' + date.toGMTString()
+	console.log(document.cookie)
+
 autoloading = (direction,speed=2000) ->
 	if direction is "next" then startpage += 1
 	if direction is "pre" then startpage += -1

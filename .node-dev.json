@@ -1,0 +1,14 @@
+{
+  "notify": true,
+  "clear": false,
+  "timestamp": "HH:MM:ss",
+  "vm": true,
+  "fork": true,
+  "ignore": [
+    "public/*.js"
+  ],
+  "extensions": {
+    "coffee": "coffee-script",
+    "ls": "LiveScript"
+  }
+}

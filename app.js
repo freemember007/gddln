@@ -25,13 +25,13 @@ app.configure('production', function(){
 
 // Model & cron job
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/vmag');
+mongoose.connect('mongodb://localhost/vmag',{safe:false});
 var Schema = mongoose.Schema
  , ObjectId = Schema.ObjectId;
 var itemSchema = new Schema({
 	_id				: ObjectId
 	, author		 : String
-	, text			 : String
+	, text			 : {type:String,index:true,unique:true}
 	, image_url	: String
 	, created_at : Date
 	, source		 : String
@@ -59,7 +59,7 @@ new cronJob('* */20 * * * *', function(){
 // Routes
 // {source:"weibo"},{created_at:1,text:1,image_url:1,author:1},{lim:1}
 app.get('/', function(req, res){
-	item.find({},{},{limit:1,sort:[['_id', -1]]},function(err,docs){
+	item.find({},{},{limit:1,sort:[['created_at', -1]]},function(err,docs){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
@@ -79,13 +79,13 @@ app.get('/callbackcancel', function(req, res){
 
 
 app.get('/ajax/:id', function(req, res){
-	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['_id', -1]]},function(err,docs){
+	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
 		res.send(docs)
 	})
 });
 
 app.get('/:id', function(req, res){
-	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['_id', -1]]},function(err,docs){
+	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
@@ -104,6 +104,16 @@ app.get('/bak/:id', function(req, res){
 			page: 2
 		});
 	})
+});
+
+app.get('/translate/:text/:from/:to', function(req, res){
+	var translate = require('./translate.js');
+	var text = req.params.text;
+	var from = req.params.from;
+	var to = req.params.to;
+	translate.translate(text,from,to,function(err, data){
+		res.send(data);
+	});
 });
 
 app.get('/cache/:id', function(req, res){
