@@ -2,6 +2,7 @@
 exports.fetch = function(model) {
   var https, options, sites, x, _i, _len, _results;
 
+  console.log('a');
   https = require('https');
   sites = ["1713053037", "1341267693", "1273034312", "1610362247", "1624763627", "1644225642", "1573047053", "1495037557", "1919131861", "1222135407", "1653460650", "1191965271", "2109300743", "1891422510", "1918182630", "2195315124", "1640516504", "1920061532", "1893786465", "2093879035", "2377059260", "1947267610", "1848155523", "2720880354", "2141100877", "1708242827", "2267520473", "2272568451", "1733950851", "2124580897"];
   _results = [];
@@ -10,7 +11,7 @@ exports.fetch = function(model) {
     options = {
       host: 'api.weibo.com',
       port: 443,
-      path: '/2/statuses/user_timeline.json?access_token=2.00xudY2B29a16B379183efediehepD&uid=' + x + '&feature=1&count=1',
+      path: '/2/statuses/user_timeline.json?source=2879718887&uid=' + x + '&feature=1&count=1',
       method: 'get'
     };
     _results.push(https.request(options, function(res) {

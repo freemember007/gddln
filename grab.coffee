@@ -4,7 +4,7 @@
 
 # https模块
 exports.fetch = (model) ->
-	
+	console.log('a')
 	https = require('https')
 	
 	sites = ["1713053037","1341267693","1273034312","1610362247","1624763627","1644225642","1573047053","1495037557",
@@ -16,7 +16,7 @@ exports.fetch = (model) ->
 		options = {
 		host:'api.weibo.com',
 		port:443,
-		path:'/2/statuses/user_timeline.json?access_token=2.00xudY2B29a16B379183efediehepD&uid='+x+'&feature=1&count=1',
+		path:'/2/statuses/user_timeline.json?source=2879718887&uid=' + x + '&feature=1&count=1',
 		method:'get'
 		}
 		https.request(options, (res) ->

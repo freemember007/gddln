@@ -23,10 +23,10 @@ a{color:#333;text-decoration:none}
 #theme .themeItem{margin-left:10px;width:30px;height:10px;float:left}
 
 @media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000336}}
-#theme #white{background:#eee}
+#theme #white{background:#fff}
 
 @media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000338}}
-#theme #gray{background:#ccc}
+#theme #gray{background:#fff}
 
 @media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000342}}
 #backTop{left:50%;bottom:50%;padding:5px;border:1px dotted #ddd;color:#eee;font-size:24px;position:fixed;cursor:pointer;display:none}

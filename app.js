@@ -2,7 +2,7 @@
 var moment = require('moment');
 var express = require('express')
 var app = module.exports = express.createServer();
-var nib = require("nib");//还没搞明白是咋用的。。。
+var nib = require("nib");//还没搞明白是咋用的。。。 
 
 // Configuration
 app.configure(function(){
@@ -42,12 +42,13 @@ mongoose.model('item', itemSchema);
 var item = mongoose.model('item');
 
 var grab = require('./grab.js');
+grab.fetch(item);
 var cronJob = require('cron').CronJob;
-new cronJob('* */20 * * * *', function(){
+new cronJob('00 */20 * * * *', function(){
     grab.fetch(item);
 	}, function () {
     console.log('哦，糟糕，任务意外终止了。。。');
-  }, true);
+  }, false);
 
 // var grab = require('./grab.js');
 // setInterval(function(){
