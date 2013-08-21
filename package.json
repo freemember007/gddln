@@ -1,18 +1,25 @@
 {
   "name": "gddln",
-  "version": "1.0.0",
+  "version": "1.0.0-1",
   "private": true,
   "dependencies": {
     "express": ">= 2.5.8",
     "jade": "0.30.0",
     "stylus": "0.32.1",
-    "nib": "0.9.1", 
+    "nib": "0.9.1",
     "coffee-script": "1.6.2",
     "moment": "2.0.0",
     "mongodb": "1.0.2",
     "mongoose": ">= 2.6.5",
     "mongous": ">= 0.2.3",
     "cron": "~1.0.1",
-    "mstranslator": "0.1.5" //Bing translator plugin
+    "mstranslator": "0.1.5"
+  },
+  "subdomain": "gddln",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "engines": {
+    "node": "0.8.x"
   }
 }

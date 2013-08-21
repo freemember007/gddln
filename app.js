@@ -12,7 +12,7 @@ app.configure(function(){
 	app.use(express.methodOverride());
 	app.use(require('stylus').middleware({src: __dirname + '/public', compress: true, firebug: true}));
 	app.use(express.compiler({src: __dirname + '/public', enable: ['coffeescript']}));
-	app.use(express.static(__dirname + '/public'));
+	app.use(express.static(__dirname + '/public'), {maxAge: 864000000});
 });
 
 app.configure('development', function(){
@@ -23,7 +23,7 @@ app.configure('production', function(){
 	app.use(express.errorHandler());
 });
 
-// Model & cron job
+// 模型
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/vmag',{safe:false});
 var Schema = mongoose.Schema
@@ -41,20 +41,17 @@ var itemSchema = new Schema({
 mongoose.model('item', itemSchema);
 var item = mongoose.model('item');
 
+// 抓取任务
 var grab = require('./grab.js');
 grab.fetch(item);
 var cronJob = require('cron').CronJob;
-new cronJob('00 */20 * * * *', function(){
-    grab.fetch(item);
-	}, function () {
-    console.log('哦，糟糕，任务意外终止了。。。');
-  }, false);
-
-// var grab = require('./grab.js');
-// setInterval(function(){
-// 		grab.fetch(item)
-// 	},1000*60*60
-// );
+var job = new cronJob({
+	cronTime: '00 */10 * * * *',
+	onTick: function(){console.log('job start...'); grab.fetch(item);},
+	start: false, //立即开始，但基本上要碰运气。先手动开始吧。。。
+	timeZone: 'Asia/Chongqing'
+});
+job.start();
 
 
 // Routes
