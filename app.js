@@ -1,7 +1,7 @@
 // Module dependencies
-const moment = require('moment')
+const moment  = require('moment')
 const express = require('express')
-const app = express()
+const app     = express()
 
 // Configuration
 app.configure(function(){
@@ -27,14 +27,14 @@ mongoose.connect('mongodb://localhost/vmag')
 const Schema = mongoose.Schema
  , ObjectId = Schema.ObjectId
 const itemSchema = new Schema({
-	_id				: ObjectId
-	, author		 : String
-	, text			 : {type:String,index:true,unique:true}
-	, image_url	: String
+	_id          : ObjectId
+	, author     : String
+	, text       : {type:String,index:true,unique:true}
+	, image_url  : String
 	, created_at : Date
-	, source		 : String
-	, weibo_id	 : String
-	, site_id		: String
+	, source     : String
+	, weibo_id   : String
+	, site_id    : String
 })
 mongoose.model('item', itemSchema)
 const item = mongoose.model('item')
@@ -44,10 +44,10 @@ const grab = require('./grab.js')
 grab.fetch(item)
 const cronJob = require('cron').CronJob
 const job = new cronJob({
-	cronTime: '00 */10 * * * *',
-	onTick: function(){ console.log('job start...'); grab.fetch(item) },
-	start: false, //立即开始，但基本上要碰运气。先手动开始吧。。。
-	timeZone: 'Asia/Chongqing'
+	cronTime : '00 */10 * * * *',
+	onTick   : function(){ console.log('job start...'); grab.fetch(item) },
+	start    : true,
+	timeZone : 'Asia/Chongqing'
 })
 job.start()
 
@@ -87,10 +87,10 @@ app.get('/ajax/:id', function(req, res){
 app.get('/:id', function(req, res){
 	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
 		res.render('index.jade', {
-			title: '歌德的理念',
-			items: docs,
-			time: moment(docs[0].created_at).fromNow(),
-			page: parseInt(req.params.id)+1
+			title : '歌德的理念',
+			items : docs,
+			time  : moment(docs[0].created_at).fromNow(),
+			page  : parseInt(req.params.id)+1
 		})
 	})
 })
@@ -98,10 +98,10 @@ app.get('/:id', function(req, res){
 app.get('/bak/:id', function(req, res){
 	item.find({_id:req.params.id},{},{limit:1},function(err,docs){
 		res.render('index.jade', {
-			title: '歌德的理念',
-			items: docs,
-			time: moment(docs[0].created_at).fromNow(),
-			page: 2
+			title : '歌德的理念',
+			items : docs,
+			time  : moment(docs[0].created_at).fromNow(),
+			page  : 2
 		})
 	})
 })
@@ -109,10 +109,10 @@ app.get('/bak/:id', function(req, res){
 app.get('/cache/:id', function(req, res){
 	item.find({_id:req.params.id},{},{limit:1},function(err,docs){
 		res.render('index.jade', {
-			title: '歌德的理念',
-			items: docs,
-			time: moment(docs[0].created_at).fromNow(),
-			page: 2
+			title : '歌德的理念',
+			items : docs,
+			time  : moment(docs[0].created_at).fromNow(),
+			page  : 2
 		})
 	})
 })

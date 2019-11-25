@@ -8,10 +8,10 @@ exports.fetch = function(model) {
   for (_i = 0, _len = sites.length; _i < _len; _i++) {
     x = sites[_i];
     options = {
-      host: 'api.weibo.com',
-      port: 443,
-      path: '/2/statuses/user_timeline.json?source=2879718887&uid=' + x + '&feature=1&count=1',
-      method: 'get'
+      host   : 'api.weibo.com',
+      port   : 443,
+      path   : '/2/statuses/user_timeline.json?source=2879718887&uid=' + x + '&feature=1&count=1',
+      method : 'get'
     };
     _results.push(https.request(options, function(res) {
       var result;
@@ -31,14 +31,14 @@ exports.fetch = function(model) {
             if (i.text.match(/预订|粉丝|微博|屏蔽|有奖|奖品|大奖|转发|转让|微信/) || i.bmiddle_pic === void 0) {
 
             } else {
-              itemOne = new model();
-              itemOne.text = i.text;
-              itemOne.image_url = i.bmiddle_pic;
-              itemOne.author = i.user.name;
+              itemOne            = new model();
+              itemOne.text       = i.text;
+              itemOne.image_url  = i.bmiddle_pic;
+              itemOne.author     = i.user.name;
               itemOne.created_at = i.created_at;
-              itemOne.weibo_id = i.mid;
-              itemOne.source = "weibo";
-              itemOne.site_id = i.user.id;
+              itemOne.weibo_id   = i.mid;
+              itemOne.source     = "weibo";
+              itemOne.site_id    = i.user.id;
               itemOne.save(function(err) {
                 return console.log(err);
               });
