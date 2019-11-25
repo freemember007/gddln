@@ -1,80 +1,145 @@
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/node_modules\/stylus\/lib\/functions\/index\.styl}line{font-family:\000031}}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\000033}}
-body{background:#ddd;padding:0;margin:0;font-size:14px;font-weight:normal;font-family:"Microsoft Yahei","Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti !important}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000310}}
-a{color:#333;text-decoration:none}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000314}}
-#top{color:#333;font-size:24px;width:920px;padding:5px 20px 5px 20px;display:inline-block;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000320}}
-#top p{float:left}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000322}}
-#top img{float:right;margin-left:400px}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000326}}
-#theme{width:80px;height:40px;float:right;padding-right:0;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000331}}
-#theme .themeItem{margin-left:10px;width:30px;height:10px;float:left}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000336}}
-#theme #white{background:#fff}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000338}}
-#theme #gray{background:#fff}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000342}}
-#backTop{left:50%;bottom:50%;padding:5px;border:1px dotted #ddd;color:#eee;font-size:24px;position:fixed;cursor:pointer;display:none}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000353}}
-#main{margin-left:auto;margin-right:auto;margin-top:0;width:960px;padding:5px 5px 5px 5px;background:#fff}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000361}}
-#content{padding:5px 20px 5px 20px}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000364}}
-#item{border-top:3px dashed #aaa;border-bottom:3px dashed #aaa;padding:30px 0 30px 0;overflow:hidden;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000369}}
-#item img{float:left;text-align:center;vertical-align:center;border:1px solid #aaa;padding:3px}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000375}}
-#item h2{text-align:center}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000378}}
-.right{float:right;width:430px}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000382}}
-#text{vertical-align:center;color:#666;padding-bottom:15px;line-height:24px}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000388}}
-#author{border-top:1px solid #aaa;color:#666;padding-top:15px;padding-bottom:10px;text-align:center;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000394}}
-#author a{color:#666}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000397}}
-.radio{padding-top:10px;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\0000399}}
-.radio iframe{scrolling:no;border:0;width:420px;height:190px;hspace:-100px;vspace:-100px;marginheight:-100px;marginwidth:-100px;align:center}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\00003110}}
-.share{border-radius:3px;border:1px dashed #666;padding:1px 2px;font-size:12px;color:#666;display:inline;margin-top:50px;margin-left:10px;float:right;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\00003120}}
-.share a{color:#666;text-decoration:none}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\00003124}}
-#bottom{width:780px;margin-left:auto;margin-right:auto;text-align:center;color:#ccc;font-size:12px;}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\00003131}}
-#bottom a{color:#ccc}
-
-@media -stylus-debug-info{filename{font-family:file\:\/\/\/Users\/xjp\/demo\/gddln\/public\/stylesheets\/main\.styl}line{font-family:\00003134}}
-#tongji{display:none}
+body {
+  background: #ddd;
+  padding: 0px;
+  margin: 0px;
+  font-size: 14px;
+  font-weight: normal;
+  font-family: "Microsoft Yahei", "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+#top {
+  color: #333;
+  font-size: 24px;
+  width: 920px;
+  padding: 5px 20px 5px 20px;
+  display: inline-block;
+}
+#top p {
+  float: left;
+}
+#top img {
+  float: right;
+  margin-left: 400px;
+}
+#theme {
+  width: 80px;
+  height: 40px;
+  float: right;
+  padding-right: 0px;
+}
+#theme .themeItem {
+  margin-left: 10px;
+  width: 30px;
+  height: 10px;
+  float: left;
+}
+#theme #white {
+  background: #fff;
+}
+#theme #gray {
+  background: #fff;
+}
+#backTop {
+  left: 50%;
+  bottom: 50%;
+  padding: 5px;
+  border: 1px dotted #ddd;
+  color: #eee;
+  font-size: 24px;
+  position: fixed;
+  cursor: pointer;
+  display: none;
+}
+#main {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 960px;
+  padding: 5px 5px 5px 5px;
+  background: #fff;
+}
+#content {
+  padding: 5px 20px 5px 20px;
+}
+#item {
+  border-top: 3px dashed #aaa;
+  border-bottom: 3px dashed #aaa;
+  padding: 30px 0 30px 0;
+  overflow: hidden;
+}
+#item img {
+  float: left;
+  text-align: center;
+  vertical-align: center;
+  border: 1px solid #aaa;
+  padding: 3px;
+}
+#item h2 {
+  text-align: center;
+}
+.right {
+  float: right;
+  width: 430px;
+}
+#text {
+  vertical-align: center;
+  color: #666;
+  padding-bottom: 15px;
+  line-height: 24px;
+}
+#author {
+  border-top: 1px solid #aaa;
+  color: #666;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+#author a {
+  color: #666;
+}
+.radio {
+  padding-top: 10px;
+}
+.radio iframe {
+  scrolling: no;
+  border: 0;
+  width: 420px;
+  height: 190px;
+  hspace: -100px;
+  vspace: -100px;
+  marginheight: -100px;
+  marginwidth: -100px;
+  align: center;
+}
+.share {
+  border-radius: 3px;
+  border: 1px dashed #666;
+  padding: 1px 2px;
+  font-size: 12px;
+  color: #666;
+  display: inline;
+  margin-top: 50px;
+  margin-left: 10px;
+  float: right;
+}
+.share a {
+  color: #666;
+  text-decoration: none;
+}
+#bottom {
+  width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: #ccc;
+  font-size: 12px;
+}
+#bottom a {
+  color: #ccc;
+}
+#tongji {
+  display: none;
+}

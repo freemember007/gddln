@@ -14,6 +14,7 @@ const logger = require('./logger')
     .catch(err => logger.error(err.message))
 
   for(const i of tweets){
+    if(!i.bmiddle_pic) continue // 跳过无图片的内容
     const item = new Item({
       text       : i.text,
       image_url  : i.bmiddle_pic,
@@ -23,7 +24,7 @@ const logger = require('./logger')
       source     : "weibo",
       site_id    : i.user.id
     })
-    
+
     await item.save((err, res) => {
       err && logger.error(err) || logger.log(res)
     })
