@@ -29,7 +29,7 @@ html
 					- each item in items
 						#item
 							//#waiting 图片加载中
-							img(src="http://wx4.sinaimg.cn/bmiddle/0080ESsQly1g99kj8rg38j337k4tckjq.jpg",id="image_url", referrerpolicy="no-referrer")
+							img(src=item.image_url,id="image_url")
 							.right
 								#text= item.text
 								#author 
