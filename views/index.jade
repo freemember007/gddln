@@ -1,53 +1,53 @@
 !!!
 html
-	head
-		title= title
-		link(rel='stylesheet', href='/stylesheets/main.css')
-		script(src="/javascripts/jquery-1.7.2.min.js")
-		script(src="/javascripts/main.js")
-		script(src="/javascripts/moment.js")
-		script(src="/javascripts/jquery.fullscreen.min.js")
-	body
-		#backTop(onclick="scrollToTop()") 回顶部
-		#main
-			#top
-				p
-					a(href='#',onclick="autoloading('home',500)") 歌德的理念(Goethe's idea)
-				a(href='images/yuewei.apk')
-					//- img(src='images/android.png')
-					//- img(src='images/iphone.png')
-				#theme
-					.themeItem#white(onclick="setTheme('white','#fff','#ddd')")
-					.themeItem#gray(onclick="setTheme('gray','#E9E5E5','#595858')")
-			#content
-				if page==22
-					.item
-						h2 阅读完毕！请2小时后再来！歌德的理念：
-						p A man should hear a little music, read a little poetry, and see a fine picture every day of his life, in order that worldly cares may not obliterate the sense of the beautiful which God has implanted in the human soul. (Johann Wolfgang von Goethe)
-						p 一个人在他的生活中应该每天听一点音乐，读一点诗歌，看一幅美丽的画，以致世俗的关心不会磨灭上帝植入人类灵魂的审美能力。
-				else
-					- each item in items
-						#item
-							//#waiting 图片加载中
-							img(src=item.image_url, id="image_url", referrerpolicy="no-referrer")
-							.right
-								#text= item.text
-								#author
-									a(href="http://weibo.com/"+item.site_id,target="_blank")=item.author
-									span= " ("+time+")"
-								// .radio
-								// 	iframe(src="http://douban.fm/partner/baidu/doubanradio")
-								.share
-									a(id="sinashare", href="#", itemId=item._id, onclick="share()") 分享到weibo
-								.share
-									a(href="#", title="也可以按方向键→", onclick="autoloading('next',500)")下一个
-								#goPre.share
-									a(id="goPre", title="也可以按方向键←", href="#", onclick="autoloading('pre',500)")上一个
-									//button(onclick='windowopen()')全屏显示
-			#bottom
-				p A man should hear a little music, read a little poetry, and see a fine picture every day of his life, in order that worldly cares may not obliterate the sense of the beautiful which God has implanted in the human soul. (Johann Wolfgang von Goethe)
-				p 一个人在他的生活中应该每天听一点音乐，读一点诗歌，看一幅美丽的画，以致世俗的关心不会磨灭上帝植入人类灵魂的审美能力。（歌德）
-				p @copyright2012
-					a(href="http://weibo.com/freemember007", target="_blank")歌德的理念
-			#tongji
-				script(src="http://s95.cnzz.com/stat.php?id=4232991&web_id=4232991")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    script(src="/javascripts/jquery-1.7.2.min.js")
+    script(src="/javascripts/main.js")
+    script(src="/javascripts/moment.js")
+    script(src="/javascripts/jquery.fullscreen.min.js")
+  body
+    #backTop(onclick="scrollToTop()") 回顶部
+    #main
+      #top
+        p
+          a(href='#',onclick="autoloading('home',500)") 歌德的理念(Goethe's idea)
+        a(href='images/yuewei.apk')
+          //- img(src='images/android.png')
+          //- img(src='images/iphone.png')
+        #theme
+          .themeItem#white(onclick="setTheme('white','#fff','#ddd')")
+          .themeItem#gray(onclick="setTheme('gray','#E9E5E5','#595858')")
+      #content
+        if page==22
+          .item
+            h2 阅读完毕！请2小时后再来！歌德的理念：
+            p A man should hear a little music, read a little poetry, and see a fine picture every day of his life, in order that worldly cares may not obliterate the sense of the beautiful which God has implanted in the human soul. (Johann Wolfgang von Goethe)
+            p 一个人在他的生活中应该每天听一点音乐，读一点诗歌，看一幅美丽的画，以致世俗的关心不会磨灭上帝植入人类灵魂的审美能力。
+        else
+          - each item in items
+            #item
+              //#waiting 图片加载中
+              img(src=item.image_url, id="image_url", referrerpolicy="no-referrer")
+              .right
+                #text= item.text
+                #author
+                  a(href="http://weibo.com/"+item.site_id,target="_blank")=item.author
+                  span= " ("+time+")"
+                .radio
+                  iframe(frameborder='no', border='0',  marginwidth='0',  marginheight='0',  width='330', height='86', scrolling='auto ', iframeborder='0 ', src='//music.163.com/outchain/player?type=2&id=500686329&auto=1&height=66')
+                .share
+                  a(id="sinashare", href="#", itemId=item._id, onclick="share()") 分享到weibo
+                .share
+                  a(href="#", title="也可以按方向键→", onclick="autoloading('next',500)")下一个
+                #goPre.share
+                  a(id="goPre", title="也可以按方向键←", href="#", onclick="autoloading('pre',500)")上一个
+                  //button(onclick='windowopen()')全屏显示
+      #bottom
+        p A man should hear a little music, read a little poetry, and see a fine picture every day of his life, in order that worldly cares may not obliterate the sense of the beautiful which God has implanted in the human soul. (Johann Wolfgang von Goethe)
+        p 一个人在他的生活中应该每天听一点音乐，读一点诗歌，看一幅美丽的画，以致世俗的关心不会磨灭上帝植入人类灵魂的审美能力。（歌德）
+        p @copyright2012
+          a(href="http://weibo.com/freemember007", target="_blank")歌德的理念
+      #tongji
+        script(src="http://s95.cnzz.com/stat.php?id=4232991&web_id=4232991")
