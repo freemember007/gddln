@@ -23,7 +23,7 @@ app.configure('production', function(){
 
 // 模型
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/vmag',{safe:false})
+mongoose.connect('mongodb://localhost/vmag')
 const Schema = mongoose.Schema
  , ObjectId = Schema.ObjectId
 const itemSchema = new Schema({
