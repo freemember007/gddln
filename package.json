@@ -6,7 +6,7 @@
     "cron": "1.0.1",
     "express": "3.0.0",
     "jade": "0.30.0",
-    "moment": "2.0.0",
+    "moment": "2.24.0",
     "mongodb": "1.0.2",
     "mongoose": "2.6.5",
     "stylus": "0.32.1",
