@@ -13,7 +13,7 @@ app.configure(function(){
 	app.use(express.bodyParser())
 	app.use(express.methodOverride())
 	app.use(require('stylus').middleware({src: __dirname + '/public', compress: true, firebug: true}))
-	app.use(express.static(__dirname + '/public'), {maxAge: 864000000})
+	app.use(express.static(__dirname + '/public'), { maxAge: 3600*12*7 })
 })
 
 app.configure('development', function(){
@@ -93,6 +93,6 @@ app.get('/cache/:id', function(req, res){
 const PORT = process.env.NODE_ENV === 'production' ? 80 : 3000
 app.listen(PORT, function(res){
 	logger.log(`Express server listening on ${PORT}`)
-	// 每天0点0分执行抓取最新微博任务
-	schedule.scheduleJob('* * * * *', () => require('./grab'))
+	// 每小时0分抓取最新微博
+	schedule.scheduleJob('0 * * * *', () => require('./grab'))
 })
