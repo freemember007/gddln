@@ -2,7 +2,6 @@
 var moment = require('moment');
 var express = require('express')
 var app = module.exports = express.createServer();
-var nib = require("nib");//还没搞明白是咋用的。。。 
 
 // Configuration
 app.configure(function(){
