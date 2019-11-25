@@ -1,7 +1,7 @@
 // Module dependencies
 const moment = require('moment')
 const express = require('express')
-const app = module.exports = express()
+const app = express()
 
 // Configuration
 app.configure(function(){
