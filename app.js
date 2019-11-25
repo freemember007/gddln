@@ -1,7 +1,10 @@
 // Module dependencies
-const moment  = require('moment')
-const express = require('express')
-const app     = express()
+const moment   = require('moment')
+const express  = require('express')
+const app      = express()
+const schedule = require('node-schedule')
+const { Item } = require('./models')
+const logger   = require('./logger')
 
 // Configuration
 app.configure(function(){
@@ -21,41 +24,11 @@ app.configure('production', function(){
 	app.use(express.errorHandler())
 })
 
-// 模型
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/vmag')
-const Schema = mongoose.Schema
- , ObjectId = Schema.ObjectId
-const itemSchema = new Schema({
-	_id          : ObjectId
-	, author     : String
-	, text       : {type:String,index:true,unique:true}
-	, image_url  : String
-	, created_at : Date
-	, source     : String
-	, weibo_id   : String
-	, site_id    : String
-})
-mongoose.model('item', itemSchema)
-const item = mongoose.model('item')
-
-// 抓取任务
-const grab = require('./grab.js')
-grab.fetch(item)
-const cronJob = require('cron').CronJob
-const job = new cronJob({
-	cronTime : '00 */10 * * * *',
-	onTick   : function(){ console.log('job start...'); grab.fetch(item) },
-	start    : true,
-	timeZone : 'Asia/Chongqing'
-})
-job.start()
-
 
 // Routes
 // {source:"weibo"},{created_at:1,text:1,image_url:1,author:1},{lim:1}
 app.get('/', function(req, res){
-	item.find({},{},{limit:1,sort:[['created_at', -1]]},function(err,docs){
+	Item.find({},{},{limit:1,sort:[['created_at', -1]]},function(err,docs){
 		res.render('index.jade', {
 			title: '歌德的理念',
 			items: docs,
@@ -79,13 +52,13 @@ app.get('/callbackcancel', function(req, res){
 
 
 app.get('/ajax/:id', function(req, res){
-	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
+	Item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
 		res.send(docs)
 	})
 })
 
 app.get('/:id', function(req, res){
-	item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
+	Item.find({},{},{limit:1,skip:parseInt(req.params.id)-1,sort:[['created_at', -1]]},function(err,docs){
 		res.render('index.jade', {
 			title : '歌德的理念',
 			items : docs,
@@ -96,7 +69,7 @@ app.get('/:id', function(req, res){
 })
 
 app.get('/bak/:id', function(req, res){
-	item.find({_id:req.params.id},{},{limit:1},function(err,docs){
+	Item.find({_id:req.params.id},{},{limit:1},function(err,docs){
 		res.render('index.jade', {
 			title : '歌德的理念',
 			items : docs,
@@ -107,7 +80,7 @@ app.get('/bak/:id', function(req, res){
 })
 
 app.get('/cache/:id', function(req, res){
-	item.find({_id:req.params.id},{},{limit:1},function(err,docs){
+	Item.find({_id:req.params.id},{},{limit:1},function(err,docs){
 		res.render('index.jade', {
 			title : '歌德的理念',
 			items : docs,
@@ -119,5 +92,7 @@ app.get('/cache/:id', function(req, res){
 
 const PORT = process.env.NODE_ENV === 'production' ? 80 : 3000
 app.listen(PORT, function(res){
-	console.log(`Express server listening on ${PORT}`)
+	logger.log(`Express server listening on ${PORT}`)
+	// 每天0点0分执行抓取最新微博任务
+	schedule.scheduleJob('* * * * *', () => require('./grab'))
 })
