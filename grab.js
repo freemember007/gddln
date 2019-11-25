@@ -9,7 +9,10 @@ const logger = require('./logger')
 
   const tweets = await agent
     .get('https://api.weibo.com/2/statuses/public_timeline.json')
-    .query({ access_token: '2.00xudY2Bp7AtID549e85b771WW3fWD' })
+    .query({
+      access_token : '2.00xudY2Bp7AtID549e85b771WW3fWD',
+      count        : 200, // 貌似最多一次允许200条
+    })
     .then(res => res.body && res.body.statuses)
     .catch(err => logger.error(err.message))
 

@@ -93,6 +93,6 @@ app.get('/cache/:id', function(req, res){
 const PORT = process.env.NODE_ENV === 'production' ? 80 : 3000
 app.listen(PORT, function(res){
 	logger.log(`Express server listening on ${PORT}`)
-	// 每小时0分抓取最新微博
-	schedule.scheduleJob('0 * * * *', () => require('./grab'))
+	// 每天0点0分抓取最新微博
+	schedule.scheduleJob('0 0 * * *', () => require('./grab'))
 })
