@@ -3,13 +3,14 @@
   "version": "1.0.0-1",
   "private": true,
   "dependencies": {
-    "express": ">= 2.5.8",
+    "cron": "1.0.1",
+    "express": "3.0.0",
     "jade": "0.30.0",
-    "stylus": "0.32.1",
     "moment": "2.0.0",
     "mongodb": "1.0.2",
-    "mongoose": ">= 2.6.5",
-    "cron": "~1.0.1"
+    "mongoose": "2.6.5",
+    "stylus": "0.32.1",
+    "time": "^0.12.0"
   },
   "author": "xjp",
   "license": "ISC",
